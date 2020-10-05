@@ -6,11 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('formShow') }}">
                         @csrf
-
+<example-component @error('name') :message="{{ $message }}" @enderror></example-component>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -93,3 +92,9 @@
     </div>
 </div>
 @endsection
+<script>
+    import Field from "../../js/components/field";
+    export default {
+        components: {Field}
+    }
+</script>

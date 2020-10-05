@@ -42,5 +42,6 @@ Route::post('/sendInFuture', 'LetterController@formShow')->name('formShow');
 Route::get('/sendInFuture', 'LetterController@viewForm')->name('viewForm');
 Route::post('/sendVideo', 'LetterController@video')->name('video');
 
+Route::get('/test', 'LetterController@test')->name('test');
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -46,7 +46,6 @@ $(function ()
                 console.error('Cannot start video recording: ', error);
             });
 
-
             // release stream on stopRecording
             recorder.stream = stream;
             setTimeout(function() {
@@ -55,7 +54,6 @@ $(function ()
                 stopped();
                 }
             }, 10000);
-
 
             // Enable stop recording button
             document.getElementById('btn-stop-recording').disabled = false;
@@ -74,9 +72,7 @@ $(function ()
 
             recorder.stopRecording().then(function () {
                 console.info('stopRecording success');
-                console.log('asfrasgds')
-                console.log( recorder.stream);
-                console.log(recorder)
+                console.log(recorder.stream);
                 console.log(recorder.stream.active)
                 // Retrieve recorded video as blob and display in the preview element
                 const blob = recorder.blob;
@@ -125,6 +121,7 @@ $(function ()
                     success: function (data) {
                         alert('Спасибо, Ваше видео сохранено!'); //То что выводится после успешно отправки
                         $('#video-src').val(data);
+                        console.log(data)
                     }
                 })
                 URL.revokeObjectURL(videoUrl.href);

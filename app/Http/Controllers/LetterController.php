@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\View\Components\field;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
+use Laravel\Ui\Presets\Vue;
 
 class LetterController extends Controller
 {
+
+    public static function test () {
+        return(view('../js/components/field.vue'));
+    }
+
     public static function video()
     {
 
+
+        var_dump($_FILES);
+
+        return json_decode(['random']);
         $to      = 'keltdeep@gmail.com';
         $subject = 'the subject';
         $message = 'hello';
