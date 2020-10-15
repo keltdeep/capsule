@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\View\Components\field;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Laravel\Ui\Presets\Vue;
@@ -17,9 +19,9 @@ class LetterController extends Controller
 
     public static function video()
     {
+        //send
+        return response()->json('src', 200);
 
-
-        var_dump($_FILES);
 
         return json_decode(['random']);
         $to      = 'keltdeep@gmail.com';
@@ -97,16 +99,13 @@ var_dump(mail($to, $subject, $message, $headers));
      */
     public static function viewForm ()
     {
-        // прокидываем предыдущие проставленные значения полей
-        $data = old();
-
-        return view('showForm', compact('data'));
+        return view('showForm');
     }
 
     /**
      * Отображение формы отправки регистрации и письма Метод POST
      * @param Request $request
-     * @return View
+     * @return \Illuminate\Http\Response
      */
     public static function formShow(Request $request)
     {
@@ -116,7 +115,8 @@ var_dump(mail($to, $subject, $message, $headers));
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'min:11', 'unique:users']
         ]);
-        $data = $request->all();
-        return view('showForm', compact('data'));
+//        return json_encode($_POST);
+        return response()->view('showForm');
     }
+
 }

@@ -16,7 +16,7 @@ class Letters extends Migration
         Schema::create('letters', function (Blueprint $table) {
         $table->id();
         $table->string('email')->unique();
-        $table->string('text_letter');
+        $table->string('text_letter')->nullable();
         $table->string('video_src')->nullable();
         $table->date('dateLetter');
         $table->boolean('status')->default(false);

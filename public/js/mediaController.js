@@ -1,9 +1,22 @@
 //Скрипт по стриму Видео, отправка файла на Бэк и получение ссылки на Видео
 $(function ()
 {
-    document.getElementById('dateLetter').valueAsDate = new Date();
+
+    // $('#dateLetter').val(today);
 // Store a reference of the preview video element and a global reference to the recorder instance
     const video = document.getElementById('my-preview');
+
+    $('.hide').hide();
+    $('#text-btn').click(function () {
+        $('.hide').show();
+        $('#text-area').toggleClass('hide', 'show');
+        // $('#video-btn').attr('disable', true);
+    })
+    $('#text-btn').click(function () {
+        $('.show').hide();
+        $('#text-area').toggleClass('show', 'hide');
+        // $('#video-btn').attr('disable', false);
+    })
 
     $('#video-show').hide();
     let recorder;

@@ -1,100 +1,64 @@
 @extends('layouts.app')
-
+@push('scripts')
+    <script type="application/javascript" src="{{ asset('js/patterns.js') }}"></script>
+@endpush
 @section('content')
-<div class="container" xmlns="http://www.w3.org/1999/html">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('formShow') }}">
-                        @csrf
-<example-component @error('name') :message="{{ $message }}" @enderror></example-component>
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <modal_login>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <template v-slot:email-modal>
+        <register_email
+{{--            @error('email')--}}
+{{--            v-bind:active="true"--}}
+{{--            @enderror--}}
+{{--            @if(old('email'))--}}
+{{--            v-bind:value="{{old('email')}}"--}}
+{{--            @endif--}}
+        ></register_email>
+    </template>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <template v-slot:password-modal>
+        <register_confirm>
+        </register_confirm>
+    </template>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    </modal_login>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+    <first_block>
+        <template v-slot:name="name">
+            <register_login
+{{--                @error('name')--}}
+{{--                v-bind:active="true"--}}
+{{--                @enderror--}}
+{{--                @if(old('name'))--}}
+{{--                v-bind:value="{{old('name')}}"--}}
+{{--                @endif--}}
+            ></register_login>
+        </template>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        <template v-slot:phone>
+            <register_phone
+            ></register_phone>
+        </template>
 
-{{--                        <div class="form-group row">--}}
-{{--                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>--}}
+        <template v-slot:email>
+            <register_email
+            ></register_email>
+        </template>
+        <template v-slot:button>
 
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">--}}
+            <div class="form-group row mb-0">
+                <div class="col-md-6 offset-md-4">
 
-{{--                                @error('password')--}}
-{{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                @enderror--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-                        <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" required name="phone">
-
-                                @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-{{--                        <div class="form-group row">--}}
-{{--                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>--}}
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit">
-
-{{--                                <button type="submit" class="btn btn-primary">--}}
-                                    {{ __('Написать в будущее!') }}
-{{--                                </button>--}}
-
-                                </button>
-
-                            </div>
-                        </div>
-                    </form>
+                    <button type="submit">
+                        Написать в будущее
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </template>
+    </first_block>
+    <reasons></reasons>
+    <advertising_video></advertising_video>
+    <reviews></reviews>
+    <footer_all></footer_all>
 @endsection
-<script>
-    import Field from "../../js/components/field";
-    export default {
-        components: {Field}
-    }
-</script>
+

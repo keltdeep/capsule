@@ -17,11 +17,9 @@ use Illuminate\Support\Facades\Route;
 //Auth::routes();
 
 // Login
-Route::group(['middleware' => ['web']], function() {
-    Route::get('/en/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
+    Route::get('/en/login', ['as' => 'login', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
     Route::post('/en/login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
     Route::post('/en/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
-});
 // Registration Routes...
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
 Route::post('register', ['as' => 'register.post', 'uses' => 'Auth\RegisterController@register']);
@@ -43,5 +41,8 @@ Route::get('/sendInFuture', 'LetterController@viewForm')->name('viewForm');
 Route::post('/sendVideo', 'LetterController@video')->name('video');
 
 Route::get('/test', 'LetterController@test')->name('test');
+Route::get('/home', function () {
+    die();
+})->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home2', 'HomeController@index')->name('home2');
